@@ -1,17 +1,22 @@
-const form = document.querySelector(".login-form")
+const form = document.querySelector('.login-form');
 
-form.addEventListener("submit", onFormSubmit);
+form.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const { elements: { email, password }
-    } = event.currentTarget;
+  const formElements = event.currentTarget.elements;
+  const mail = formElements.email.value;
+  const password = formElements.password.value;
+  const formSubmitData = {
+    mail: formElements.email.value,
+    password: formElements.password.value,
+  };
 
-    if (email.value === "" || password.value === "") {
-        return alert("Keep all data");
-    }
-    console.log(`Email : ${email.value}, Password:, ${password.value}`);
-   
-    event.currentTarget.reset();
+  if (mail === '' || password === '') {
+    return alert('Keep all data');
+  }
+
+  console.log(formSubmitData);
+  event.currentTarget.reset();
 }
